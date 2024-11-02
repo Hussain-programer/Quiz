@@ -1,0 +1,285 @@
+:root {
+    --neon-blue: #00f3ff;
+    --dark-bg: #0a0a20;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    min-height: -webkit-fill-available;
+    min-height: 100vh; /* For mobile Safari */
+    background: var(--dark-bg);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #0a0a20, #1a1a40);
+    overflow-x: hidden;
+    position: relative;
+    padding: 1rem;
+}
+
+html {
+    height: -webkit-fill-available; /* For mobile Safari */
+}
+
+.background-grid {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(45deg);
+    animation: gridMove 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes gridMove {
+    0% { transform: perspective(500px) rotateX(45deg) translateY(0); }
+    100% { transform: perspective(500px) rotateX(45deg) translateY(-50px); }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 600px;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 20px;
+    padding: clamp(1rem, 5vw, 2rem);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2),
+                0 0 40px rgba(0, 243, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem;
+}
+
+h1 {
+    text-align: center;
+    color: var(--neon-blue);
+    margin-bottom: clamp(1rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+#quiz, #difficulty-select {
+    display: none;
+}
+
+#question {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: clamp(1rem, 4vw, 2rem);
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.options {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.difficulty-buttons {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: clamp(1rem, 4vw, 2rem);
+}
+
+button {
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: clamp(0.8rem, 3vw, 1rem);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    min-height: 44px; /* For better touch targets */
+}
+
+@media (hover: hover) {
+    button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+    }
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.difficulty-btn {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: bold;
+}
+
+.difficulty-btn.easy {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.difficulty-btn.medium {
+    border-color: #FFC107;
+    color: #FFC107;
+}
+
+.difficulty-btn.hard {
+    border-color: #F44336;
+    color: #F44336;
+}
+.difficulty-btn.extreme {
+    border-color: #8B0A1A;
+    color: #8B0A1A;
+}
+.score-container {
+    text-align: center;
+    margin-top: clamp(1rem, 4vw, 2rem);
+    padding-top: clamp(0.8rem, 3vw, 1rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#score {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--neon-blue);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: clamp(1rem, 4vw, 2rem) 0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.correct {
+    background: rgba(0, 255, 0, 0.2) !important;
+}
+
+.incorrect {
+    background: rgba(255, 0, 0, 0.2) !important;
+}
+
+#start-screen {
+    text-align: center;
+}
+
+#start-screen p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: 1rem;
+}
+
+#start-btn {
+    background: var(--neon-blue);
+    color: var(--dark-bg);
+    font-weight: bold;
+    padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 3rem);
+    margin-top: 1rem;
+    display: inline-block;
+    width: auto;
+}
+
+.floating-particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.particle {
+    position: absolute;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 10s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.difficulty-label {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: clamp(0.8rem, 3vw, 1rem);
+    text-align: center;
+    color: var(--neon-blue);
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .options button {
+        padding: 0.8rem;
+    }
+
+    .particle {
+        display: none; /* Hide particles on very small screens for better performance */
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .background-grid {
+        animation: none;
+    }
+
+    .particle {
+        animation: none;
+        display: none;
+    }
+
+    button {
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark-bg: #050510;
+    }
+}
+
+/* Ensure touch targets are large enough */
+@media (pointer: coarse) {
+    button {
+        min-height: 48px;
+        padding: 1rem;
+    }
+}

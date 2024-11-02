@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="title"
+      content="Quantum Quiz 2030 - Emerging Technologies and AI"
+    />
+    <meta
+      name="description"
+      content="Quantum Quiz 2030 - Test your knowledge on quantum computing, AI, and emerging technologies"
+    />
+    <meta
+      name="keywords"
+      content="Quantum Quiz, Emerging Technologies, AI, Quantum Computing"
+    />
+    <meta name="HussainXPython" content="Quiz App" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantum Quiz 2030 - Emerging Technologies and AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Rest of the HTML remains the same -->
+    <div class="background-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="container">
+      <h1>Quiz</h1>
+
+      <div id="start-screen">
+        <p>Test your knowledge</p>
+        <button id="start-btn">Start Quiz</button>
+      </div>
+
+      <div id="difficulty-select">
+        <p class="difficulty-label">Select Difficulty Level</p>
+        <div class="difficulty-buttons">
+          <button class="difficulty-btn easy" data-difficulty="easy">
+            Easy
+          </button>
+          <button class="difficulty-btn medium" data-difficulty="medium">
+            Medium
+          </button>
+          <button class="difficulty-btn hard" data-difficulty="hard">
+            Hard
+          </button>
+          <button class="difficulty-btn extreme" data-difficulty="extreme">
+            Extreme
+          </button>
+        </div>
+      </div>
+
+      <div id="quiz">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+
+        <p id="question"></p>
+        <div class="options" id="options"></div>
+
+        <div class="score-container">
+          <p>Score: <span id="score">0</span></p>
+        </div>
+      </div>
+    </div>
+<script src="script.js"></script>
+  </body>
+</html>
